@@ -2,7 +2,7 @@ FROM continuumio/miniconda3:latest
 
 ARG DEBIAN_FRONTEND=noninteractivez
 ARG username=arturo
-ARG condaenv=components
+ARG condaenv=nyc_airbnb_dev
 
 
 RUN useradd --create-home --shell /bin/bash ${username}
