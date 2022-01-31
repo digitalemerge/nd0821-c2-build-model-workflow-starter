@@ -9,6 +9,8 @@ def pytest_addoption(parser):
     parser.addoption("--kl_threshold", action="store")
     parser.addoption("--min_price", action="store")
     parser.addoption("--max_price", action="store")
+    parser.addoption("--min_row", action="store")
+    parser.addoption("--max_row", action="store")
 
 
 @pytest.fixture(scope='session')
@@ -69,3 +71,22 @@ def max_price(request):
         pytest.fail("You must provide max_price")
 
     return float(max_price)
+
+
+@pytest.fixture(scope='session')
+def min_row(request):
+    min_row = request.config.option.min_row
+
+    if min_row is None:
+        pytest.fail("You must provide min_row")
+
+    return float(min_row)
+
+@pytest.fixture(scope='session')
+def max_row(request):
+    max_row = request.config.option.max_row
+
+    if max_row is None:
+        pytest.fail("You must provide max_row")
+
+    return float(max_row)

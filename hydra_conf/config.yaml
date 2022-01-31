@@ -10,14 +10,16 @@ basic_cleaning:
   output_artifact: "clean_sample.csv"
   output_type: "clean_sample"
   output_description: "Data with basic data cleaning implemented"
-  min_price: 10
-  max_price: 350
 etl:
   sample: "sample1.csv"
   min_price: 10  # dollars
   max_price: 350  # dollars
 data_check:
+  min_row: 15000
+  max_row: 1000000
   kl_threshold: 0.2
+  csv: "clean_sample.csv:latest"
+  ref: "clean_sample.csv:reference"
 modeling:
   # Fraction of data to use for test (the remaining will be used for train and validation)
   test_size: 0.2

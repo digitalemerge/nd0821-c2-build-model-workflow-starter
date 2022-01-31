@@ -60,6 +60,29 @@ def test_similar_neigh_distrib(data: pd.DataFrame, ref_data: pd.DataFrame, kl_th
     assert scipy.stats.entropy(dist1, dist2, base=2) < kl_threshold
 
 
-########################################################
-# Implement here test_row_count and test_price_range   #
-########################################################
+def test_row_count(data: pd.DataFrame, min_row: float, max_row: float) -> None:
+    """
+    Tests the row count for a given dataframe. The thresholds are fixed in this function via config.yaml
+
+    input:
+            data: Dataframe with the data to be tested
+    output:
+            None
+    """
+    assert min_row < data.shape[0] < max_row
+
+
+def test_price_range(data: pd.DataFrame, min_price: float, max_price: float) -> None:
+    """
+        Tests the price ranges in the dataframe given as input.
+
+        input:
+                data: Dataframe with the data to be tested
+        output:
+                None
+        """
+
+    data_index = data['price'].between(min_price, max_price)
+    assert np.sum(~data_index) == 0
+
+
