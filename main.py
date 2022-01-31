@@ -1,6 +1,7 @@
 import json
 import mlflow
 import tempfile
+import pathlib
 import os
 import wandb
 import hydra
@@ -48,10 +49,18 @@ def go(config: DictConfig):
             )
 
         if "basic_cleaning" in active_steps:
-            ##################
-            # Implement here #
-            ##################
-            pass
+            _ = mlflow.run(
+                str(pathlib.Path(hydra.utils.get_original_cwd(), "src", "basic_cleaning")),
+                "main",
+                parameters={
+                    "input_artifact": config['basic_cleaning']['input_artifact'],
+                    "output_artifact": config['basic_cleaning']['output_artifact'],
+                    "output_type": config['basic_cleaning']['output_type'],
+                    "output_description": config['basic_cleaning']['output_description'],
+                    "min_price": config['basic_cleaning']['min_price'],
+                    "max_price": config['basic_cleaning']['max_price']
+                },
+            )
 
         if "data_check" in active_steps:
             ##################
