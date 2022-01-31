@@ -54,7 +54,7 @@ def drop_outliers_price(data_frame: pd.DataFrame) -> pd.DataFrame:
             data_frame: pandas dataframe without outliers in the lat & lon columns.
     """
 
-    data_frame_index = data_frame['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    data_frame_index = data_frame['longitude'].between(-74.25, -73.50) & data_frame['latitude'].between(40.5, 41.2)
     data_frame = data_frame[data_frame_index].copy()
 
 def column_2_datetime(data_frame: pd.DataFrame, col_name: str) -> pd.DataFrame:
