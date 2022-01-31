@@ -44,6 +44,18 @@ def drop_outliers_price(data_frame: pd.DataFrame) -> pd.DataFrame:
 
     return data_frame
 
+def drop_outliers_price(data_frame: pd.DataFrame) -> pd.DataFrame:
+    """
+    Drop outliers for the lat and lon columns in the given dataframe.
+
+    input:
+            data_frame: Dataframe with columns lat & lon.
+    output:
+            data_frame: pandas dataframe without outliers in the lat & lon columns.
+    """
+
+    data_frame_index = data_frame['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    data_frame = data_frame[data_frame_index].copy()
 
 def column_2_datetime(data_frame: pd.DataFrame, col_name: str) -> pd.DataFrame:
     """
@@ -123,6 +135,7 @@ def go(args: Dict[Any, Any]) -> None:
     data_frame = import_data(artifact_local_path)
     data_frame = drop_outliers_price(data_frame)
     data_frame = column_2_datetime(data_frame, 'last_review')
+    data_frame = drop_outliers_lat_lon(data_frame)
     frame_2_csv(data_frame, args.output_artifact)
     add_log_wandb_artifact("clean_sample.csv", args.output_type, args.output_description, run)
     remove_local_output(args)
