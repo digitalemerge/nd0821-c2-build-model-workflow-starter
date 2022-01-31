@@ -20,4 +20,5 @@ dependencies:
 #   - pandas-profiling=3.1.0
 #   - pyarrow=6.0.1
   - pip=21.3.1
-  - wandb==0.12.9
+  - wandb=0.12.9
+  - cookiecutter=1.7.3
