@@ -44,7 +44,7 @@ def drop_outliers_price(data_frame: pd.DataFrame) -> pd.DataFrame:
 
     return data_frame
 
-def drop_outliers_price(data_frame: pd.DataFrame) -> pd.DataFrame:
+def drop_outliers_lat_lon(data_frame: pd.DataFrame) -> pd.DataFrame:
     """
     Drop outliers for the lat and lon columns in the given dataframe.
 
