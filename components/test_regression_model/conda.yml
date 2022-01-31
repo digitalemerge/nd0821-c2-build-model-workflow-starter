@@ -7,6 +7,6 @@ dependencies:
   - pip=21.3.1
   - mlflow=1.23.1
   - scikit-learn=1.0.2
+  - wandb==0.12.9
   - pip:
-      - wandb==0.12.9
-      - git+https://github.com/udacity/nd0821-c2-build-model-workflow-starter.git#egg=wandb-utils&subdirectory=components
+      - git+https://github.com/digitalemerge/nd0821-c2-build-model-workflow-starter.git#egg=wandb-utils&subdirectory=components
